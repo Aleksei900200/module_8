@@ -1,17 +1,20 @@
-//Прописывание кнопки и дива
+//Прописывание кнопки,дива и лоудера
 const btnS1 = document.getElementById('btnS1');
 const photoGallery = document.querySelector('.photo-gallery');
+const mask = document.querySelector('.mask');
 
 //Прописывание события - запрос на сайт
 btnS1.addEventListener('click', getPhotos);
 
 //Функция - запрос на сайт
 async function getPhotos(event) {
-	//Предотвращение автоматического обновления страницы
+  //Предотвращение автоматического обновления страницы
   event.preventDefault();
+  //Появления лоудера
+  mask.style.display = 'flex';
   try {
     const response = await fetch('https://dog.ceo/api/breeds/image/random/20');
-    if (!response.status=='success') {
+    if (!response.status == 'success') {
       throw new Error('Something went wrong!');
     }
     const data = await response.json();
@@ -23,6 +26,11 @@ async function getPhotos(event) {
   } catch (e) {
     console.error(e.message);
   }
+  //Удаления лоудера
+  setTimeout(() => {
+    mask.style.display = 'none';
+  }, 2000);
+
   btnS1.removeEventListener('click', getPhotos);
   console.log('Больше не кликает?!');
 }
@@ -33,10 +41,10 @@ function showAllPhotos(massive) {
     let imageItem = document.createElement('img');
     imageItem.src = massive[i];
     imageItem.style.width = '150px';
-		imageItem.className='content-alignment';
+    imageItem.className = 'content-alignment';
     newMassive.push(imageItem);
   }
   console.log(newMassive);
-	// Вывод массива с изображениями на страницу
+  // Вывод массива с изображениями на страницу
   newMassive.forEach((el) => photoGallery.appendChild(el));
 }

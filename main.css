@@ -21,6 +21,7 @@ body {
   font-size: 20px;
   background-color: transparent;
   margin: 20px 0px;
+	cursor: pointer;
 }
 .photo-gallery {
   display: flex;
@@ -33,4 +34,29 @@ body {
   align-content: space-around;
   align-self: flex-end;
   margin: 10px 5px 0px;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  background: #dad8d86e;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  transition: 600;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 105px;
+  height: 105px;
+  border: 3px solid rgba(70, 110, 240, 0.849);
+  border-radius: 50%;
+  border-left-color: rgb(116, 221, 245);
+  animation: loader 1.3s linear infinite;
+}
+@keyframes loader {
+  100% {
+    transform: rotate(360deg);
+  }
 }
