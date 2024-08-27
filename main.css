@@ -53,6 +53,7 @@ body {
   border: 3px solid rgba(70, 110, 240, 0.849);
   border-radius: 50%;
   border-left-color: rgb(116, 221, 245);
+	border-right-color: rgb(116, 221, 245);
   animation: loader 1.3s linear infinite;
 }
 @keyframes loader {
