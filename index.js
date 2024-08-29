@@ -27,9 +27,11 @@ async function getPhotos(event) {
     console.error(e.message);
   }
   //Удаления лоудера
-  setTimeout(() => {
-    mask.style.display = 'none';
-  }, 2000);
+  document.readyState === 'complete'
+      ? setTimeout(() => {
+          mask.style.display = 'none';
+        }, 1000)
+      : console.log('no');
 
   btnS1.removeEventListener('click', getPhotos);
   console.log('Больше не кликает?!');
